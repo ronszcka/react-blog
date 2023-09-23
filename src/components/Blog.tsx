@@ -1,36 +1,56 @@
-import { useState } from "react";
-
 import { Post } from "./Post";
+
+import { PostData } from "../interfaces/PostData";
+import { useFetch } from "../hooks/useFetch";
 
 export function Blog() {
 
-  const [posts, setPosts] = useState([
-    {
-      id: 1,
-      title: "Meu primeiro post",
-      body: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Laboriosam error voluptatem tenetur. Culpa eius delectus perferendis facilis eveniet quisquam minima laudantium reprehenderit tempora ipsam voluptate cupiditate unde labore, soluta magni!",
-      author: "Ana"
-    },
-    {
-      id: 2,
-      title: "Top 10 Alguma coisa",
-      body: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Laboriosam error voluptatem tenetur. Culpa eius delectus perferendis facilis eveniet quisquam minima laudantium reprehenderit tempora ipsam voluptate cupiditate unde labore, soluta magni!",
-      author: "Maria"
-    },
-    {
-      id: 3,
-      title: "Como fazer algo",
-      body: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Laboriosam error voluptatem tenetur. Culpa eius delectus perferendis facilis eveniet quisquam minima laudantium reprehenderit tempora ipsam voluptate cupiditate unde labore, soluta magni!",
-      author: "João"
-    }
-  ]);
+  // hook personalizado - useFetch
+
+  const { data: posts, isLoading } = useFetch<PostData[]>("http://localhost:8000/posts");
+
+  // // hook - useState
+  // const [posts, setPosts] = useState<PostData[]>([]);
+  // const [isLoading, setIsLoading] = useState<boolean>(false);
+  // // error...
+
+  // // hook - useEffect
+  // useEffect(() => {
+
+  //   setIsLoading(true);
+
+  //   // event-loop
+
+  //   setTimeout(() => {
+
+  //     fetch("http://localhost:8000/posts")
+  //       .then(res => {
+  //         console.log(res);
+  //         if (!res.ok) {
+  //           throw new Error("Posts not found...");
+  //         }
+  //         return res.json();
+  //       })
+  //       .then(data => {
+  //         setPosts(data);
+  //         setIsLoading(false);
+  //       })
+  //       .catch(error => {
+  //         console.error(error);
+  //         setIsLoading(false);
+  //       });
+
+  //     }, 2000);
+
+  // }, []);
 
   return (
     <>
+    { isLoading && <p>Loading...</p> }
     {
-      posts.map((post) => {
+      !isLoading && posts && posts.length > 0 && posts.map((post) => {
         return (
-          <Post title={ post.title } author={ post.author } />
+          <Post key={ post.id } title={ post.title } author={ post.author } />
         )
       })
     }
