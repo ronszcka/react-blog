@@ -35,6 +35,18 @@
       "body": "asdfdsafasdf",
       "author": "Maria",
       "id": 6
+    },
+    {
+      "title": "Novo post",
+      "body": "Recém criado",
+      "author": "João",
+      "id": 7
+    },
+    {
+      "title": "novo post",
+      "body": "agora vai",
+      "author": "Maria",
+      "id": 8
     }
   ]
 }

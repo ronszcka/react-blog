@@ -33,7 +33,7 @@ export function useFetch<T>(url: string) {
           setIsLoading(false);
         });
 
-      }, 2000);
+      }, 1);
 
   }, [url]);
 

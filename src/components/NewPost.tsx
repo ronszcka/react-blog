@@ -1,5 +1,7 @@
 import { FormEvent, useRef, useState } from "react";
 
+import { useNavigate } from "react-router-dom";
+
 export function NewPost() {
 
   //controlled form
@@ -13,6 +15,8 @@ export function NewPost() {
   const titleRef = useRef<HTMLInputElement>(null);
   const bodyRef = useRef<HTMLTextAreaElement>(null);
   const authorRef = useRef<HTMLSelectElement>(null);
+
+  const navigate = useNavigate();
 
 console.log("newpost renderizou");
 
@@ -39,12 +43,13 @@ console.log("newpost renderizou");
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(newPost)
     }).then((res) => {
-      if (res.ok) {
-        console.log("Post criado com sucesso!");
-        // redirect página do post...
-      } else {
+      if (!res.ok) {
         throw new Error("Erro ao criar o post!");
       }
+      return res.json();
+    }).then((data) => {
+      console.log(data);
+      navigate("/post/" + data.id);
     }).catch((err) => {
       console.error(err);
       alert("Erro ao criar o post!");

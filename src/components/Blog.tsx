@@ -50,7 +50,7 @@ export function Blog() {
     {
       !isLoading && posts && posts.length > 0 && posts.map((post) => {
         return (
-          <Post key={ post.id } title={ post.title } author={ post.author } />
+          <Post key={ post.id } id={ post.id } title={ post.title } author={ post.author } />
         )
       })
     }
