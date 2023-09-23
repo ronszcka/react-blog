@@ -17,6 +17,24 @@
       "title": "Como fazer algo",
       "body": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Laboriosam error voluptatem tenetur. Culpa eius delectus perferendis facilis eveniet quisquam minima laudantium reprehenderit tempora ipsam voluptate cupiditate unde labore, soluta magni!",
       "author": "João"
+    },
+    {
+      "title": "Novo post",
+      "body": "Conteúdo do novo post",
+      "author": "Maria",
+      "id": 4
+    },
+    {
+      "title": "Novo título",
+      "body": "Novo post",
+      "author": "Maria",
+      "id": 5
+    },
+    {
+      "title": "asfdasdfsadfasdfasdfasdfaasdfafdasf",
+      "body": "asdfdsafasdf",
+      "author": "Maria",
+      "id": 6
     }
   ]
 }
